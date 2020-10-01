@@ -1,30 +1,35 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <div id="header">
+      <!-- <router-link to="/">Qform</router-link> -->
+      <h1>RandQuest</h1>
+    </div>
+    <router-view></router-view>
   </div>
-  <router-view/>
 </template>
 
 <style>
+body {
+  background-color: #b2ff9e;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: #3c1642;
+  margin: 0;
+  font-size: 16px;
 }
-
-#nav {
-  padding: 30px;
+:root {
+  box-sizing: border-box;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#app,
+#app::before,
+#app::after{
+  box-sizing: inherit
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+#header > h1 {
+  margin-left: 2em;
+  font-size: 3em;
 }
 </style>
