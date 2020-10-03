@@ -1,7 +1,6 @@
 <template>
   <div>
     <div id="header">
-      <!-- <router-link to="/">Qform</router-link> -->
       <h1>RandQuest</h1>
     </div>
     <router-view></router-view>
@@ -19,6 +18,7 @@ body {
   color: #3c1642;
   margin: 0;
   font-size: 16px;
+  user-select: none
 }
 :root {
   box-sizing: border-box;

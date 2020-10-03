@@ -1,12 +1,18 @@
 <template>
-  <div>
+  <div style="margin-left: 2em">
+    <div class="label">
+      <span>Questions</span>
+      <span>Answers</span>
+    </div>
     <div ref="scount">
       <div v-for="f in forms" :key="f">
         <input-quest></input-quest>
         <span class="delinp" @click="remForm" v-show="remShow">x</span>
       </div>
     </div>
-
+    <div class="submit" @click="subForm">
+      <span>Submit</span>
+    </div>
     <div class="addsf" @click="addForm">
       <span>+</span>
     </div>
@@ -14,7 +20,9 @@
 </template>
 
 <script>
-import InputQuest from "../components/Input"
+import InputQuest from '../components/Input'
+import eventBus from '../main'
+
 export default {
   name: "QForm",
   components: {
@@ -30,6 +38,10 @@ export default {
     this.updRem()
   },
   methods: {
+    subForm() {
+      eventBus.emit('subm')
+      this.$router.push({path: '/Quest'})
+    },
     updRem() { // not able to use this.$refs in computed, this function checks remShow value
       setTimeout(() => {
         this.remShow = this.$refs.scount.children.length == 1 ? false : true
@@ -68,6 +80,12 @@ export default {
   box-shadow: 0 0 6px #3c1642;
   transition: 0.3s;
 }
+.label {
+  display: flex;
+  justify-content: space-between;
+  width: 24em;
+  font-size: 1.5em;
+}
 .addsf:hover {
   box-shadow: 0 0 12px #3c1642;
 }
@@ -78,5 +96,24 @@ export default {
   position: relative;
   top: 0.35em;
   cursor: pointer;
+}
+.submit {
+  background-color: #3c1642;
+  color: #affc41;
+  /* text-align: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6em;
+  height: 3em;
+  border-radius: 3em;
+  box-shadow: 0 0 6px #3c1642;
+  transition: 0.3s;
+  margin-top: 2em;
+  cursor: pointer;
+  font-weight: 500
+}
+.submit:hover {
+  box-shadow: 0 0 12px #3c1642;
 }
 </style>

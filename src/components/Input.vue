@@ -2,13 +2,13 @@
     <div id="input">
         <div class="tdi_name_cont tdi_cont">
             <div>
-                <input type="text" class="tdinput" id="tdinput_name" required autocomplete="off"/>
+                <input v-model="question" type="text" class="tdinput" id="tdinput_name" required autocomplete="off"/>
                 <label for="tdninput" class="form__label" id="name__label">ToDo name</label>
             </div>
         </div>
         <div class="tdi_name_cont tdi_cont">
             <div>
-                <input type="text" class="tdinput" id="tdinput_name" required autocomplete="off"/>
+                <input v-model="answer" type="text" class="tdinput" id="tdinput_name" required autocomplete="off"/>
                 <label for="tdninput" class="form__label" id="name__label">ToDo name</label>
             </div>
         </div>
@@ -16,17 +16,45 @@
 </template>
 
 <script>
+import eventBus from '../main'
+import lodash from 'lodash'
+
 export default {
-  name: 'input-quest'
+  name: 'input-quest',
+  data() {
+    return {
+      question: '',
+      answer: ''
+    }
+  },
+  methods: {
+    proxy(proxy) {
+      let pr = [...lodash.cloneDeep(proxy)]
+      pr.forEach(i => i = lodash.cloneDeep(i))
+      return pr
+    }
+  },
+  mounted() {
+    eventBus.on('subm', () => {
+      this.$store.dispatch('createQuest', {
+        quest: this.question,
+        answer: this.answer,
+        status: {
+          asked: false,
+          correct: null
+        }
+      })
+      this.proxy(this.$store.getters.getQuests)
+    })
+  }
 }
 </script>
 
 <style>
 #input {
-    margin-left: 2em;
-    margin-top: 4em;
+    margin-top: 1.5em;
     display: inline-block;
-    width: 38em;
+    margin-right: 1.5em
 }
 .tdi_cont + .tdi_cont {
     margin-left: 2em
