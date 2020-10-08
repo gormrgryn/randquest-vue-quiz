@@ -9,7 +9,12 @@ const routes = [
   {
     path: '/quest',
     name: 'Quest',
-    component: () => import('../views/Quest')
+    component: () => import('../views/QuestView')
+  },
+  {
+    path: '/results',
+    name: 'results',
+    component: () => import('../views/Results')
   }
 ]
 
