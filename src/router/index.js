@@ -4,7 +4,12 @@ const routes = [
   {
     path: '/',
     name: 'QForm',
-    component: () => import('../views/QForm.vue')
+    component: () => import('../views/QForm')
+  },
+  {
+    path: '/quest',
+    name: 'Quest',
+    component: () => import('../views/Quest')
   }
 ]
 

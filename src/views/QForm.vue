@@ -40,7 +40,7 @@ export default {
   methods: {
     subForm() {
       eventBus.emit('subm')
-      this.$router.push({path: '/Quest'})
+      this.$router.push({path: '/quest'})
     },
     updRem() { // not able to use this.$refs in computed, this function checks remShow value
       setTimeout(() => {
