@@ -1,6 +1,6 @@
 <template>
   <div id="input">
-    <div class="inp_cont">
+    <div class="inp_cont q_cont">
       <div>
         <input
           v-model="question"
@@ -122,5 +122,11 @@ export default {
 }
 .form_label {
   opacity: 0;
+}
+.q_cont {
+  width: 22em
+}
+#input_q {
+  width: 18em
 }
 </style>
